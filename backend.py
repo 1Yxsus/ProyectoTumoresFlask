@@ -78,6 +78,30 @@ def serve(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
+import os
+
+# 1. Obtener la ruta absoluta de la carpeta donde vive backend.py
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# 2. Unir esa ruta con el nombre de tu archivo del modelo
+MODEL_PATH = os.path.join(BASE_DIR, 'brain_tumor_cnn.tflite')
+
+# DEBUG: Esto imprimirá en los logs de Render si el archivo realmente existe
+if os.path.exists(MODEL_PATH):
+    print(f"✅ Archivo del modelo encontrado en: {MODEL_PATH}")
+    print(f"📏 Tamaño del archivo: {os.path.getsize(MODEL_PATH)} bytes")
+else:
+    print(f"❌ ERROR: No se encontró el archivo en: {MODEL_PATH}")
+
+# Configuración del interprete TFLite con la ruta absoluta
+try:
+    interpreter = tflite.Interpreter(model_path=MODEL_PATH)
+    interpreter.allocate_tensors()
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+    print("🚀 Intérprete de TFLite inicializado correctamente")
+except Exception as e:
+    print(f"🔥 Error crítico al inicializar TFLite: {e}")
+
 if __name__ == '__main__':
     # Usar el puerto que asigne Render
     port = int(os.environ.get("PORT", 5000))
