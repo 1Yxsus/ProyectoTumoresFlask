@@ -1,7 +1,15 @@
-tensorflow-cpu
-numpy
-scikit-learn
-matplotlib
-pandas
+# Servidor
 flask
 flask-cors
+gunicorn
+
+# Procesamiento (Lo mínimo indispensable)
+numpy
+Pillow
+
+# Inteligencia Artificial Ligera
+tflite-runtime
+
+# Solo si es estrictamente necesario para preprocesar
+# scikit-learn
+matplotlib

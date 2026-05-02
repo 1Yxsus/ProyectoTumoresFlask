@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000";
+const API_URL = " ";
 
 function App() {
   const [image, setImage] = useState(null);
@@ -24,6 +24,7 @@ function App() {
     formData.append("image", image);
 
     try {
+      // Ahora esto se convertirá en "/api/clasificar" automáticamente
       const res = await axios.post(`${API_URL}/api/clasificar`, formData);
       const data = res.data;
       setPrediction(data.prediction);
@@ -35,6 +36,7 @@ function App() {
     }
   };
 
+  // Las URLs de las imágenes ahora serán "/uploads/nombre.jpg"
   const imageUrl = imageName ? `${API_URL}/uploads/${imageName}` : "";
   const graphUrl = imageName
     ? `${API_URL}/uploads/probabilidades.png?t=${new Date().getTime()}`
