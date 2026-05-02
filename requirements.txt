@@ -1,15 +1,8 @@
-# Servidor
 flask
 flask-cors
 gunicorn
-
-# Procesamiento (Lo mínimo indispensable)
-numpy
+# Forzamos una versión de NumPy compatible con IA actual
+numpy<2.0.0
+tflite-runtime==2.14.0
 Pillow
-
-# Inteligencia Artificial Ligera
-tflite-runtime
-
-# Solo si es estrictamente necesario para preprocesar
-# scikit-learn
 matplotlib
