@@ -1,0 +1,7 @@
+tensorflow-cpu
+numpy
+scikit-learn
+matplotlib
+pandas
+flask
+flask-cors

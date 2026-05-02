@@ -1,0 +1,20 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Dataset (pesa mucho y no lo necesitas para el despliegue)
+dataset/
+
+# Frontend (ignorar los módulos pesados y el build local)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# Archivos de sistema o imágenes de prueba
+entrenamiento.png
+.DS_Store
